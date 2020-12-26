@@ -1,0 +1,7 @@
+{
+  "name": "ttor_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
