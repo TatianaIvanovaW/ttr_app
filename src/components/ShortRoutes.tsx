@@ -74,7 +74,7 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
           })}
         </IonSelect>
       </IonItem>
-      <IonItemDivider>Your Routes:</IonItemDivider>
+      {shorts.length ? <IonItemDivider>Your Routes:</IonItemDivider> : null}
 
       {shorts.length
         ? shorts.map((route, i) => {

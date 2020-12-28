@@ -1,10 +1,4 @@
-import {
-  IonPage,
-  IonFooter,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-} from "@ionic/react";
+import { IonPage, IonLabel, IonButton, IonContent } from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
 import "./Home.css";
@@ -13,12 +7,26 @@ import { useState } from "react";
 import Stations from "../components/Stations";
 import LongRoutes from "../components/LongRoutes";
 import ShortRoutes from "../components/ShortRoutes";
+import Footer from "../components/Footer";
+import CountButton from "../components/CountButton";
 
 const Home: React.FC = () => {
   const [tScore, set_tScore] = useState(0);
   const [stationsScore, set_stationsScore] = useState(0);
   const [longRouteScore, set_longRouteScore] = useState(0);
   const [shorts, set_shorts] = useState<any>([]);
+  const [finalScore, set_finalScore] = useState(0);
+
+  const reset = () => {
+    set_finalScore(0);
+  };
+
+  const result = (score: any) => {
+    set_finalScore(score);
+  };
+
+  console.log(`final score`, finalScore);
+
   const countTrains = (score: any) => {
     set_tScore(score);
     console.log(`trains score`, tScore);
@@ -41,17 +49,24 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <Header />
-
-      <TrainButtons countTrains={countTrains} />
-      <Stations countStations={countStations} />
-      <LongRoutes countLongRoute={countLongRoute} />
-      <ShortRoutes getShortRoutesArray={getShortRoutesArray} />
-
-      <IonFooter>
-        <IonToolbar>
-          <IonTitle>Footer</IonTitle>
-        </IonToolbar>
-      </IonFooter>
+      <IonLabel style={{ textAlign: "center" }}>Score : {finalScore}</IonLabel>
+      <IonButton color="warning" fill="outline" onClick={reset} type="submit">
+        Reset
+      </IonButton>
+      <IonContent>
+        <TrainButtons countTrains={countTrains} />
+        <Stations countStations={countStations} />
+        <LongRoutes countLongRoute={countLongRoute} />
+        <ShortRoutes getShortRoutesArray={getShortRoutesArray} />
+      </IonContent>
+      <CountButton
+        tScore={tScore}
+        stationsScore={stationsScore}
+        longRouteScore={longRouteScore}
+        shorts={shorts}
+        result={result}
+      />
+      <Footer />
     </IonPage>
   );
 };
