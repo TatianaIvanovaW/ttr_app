@@ -1,4 +1,4 @@
-import { IonPage } from "@ionic/react";
+import { IonPage, IonButton } from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
 import "./Home.css";
@@ -8,18 +8,28 @@ import Stations from "../components/Stations";
 
 const Home: React.FC = () => {
   const [tScore, set_tScore] = useState(0);
+  const [stationsScore, set_stationsScore] = useState(0);
 
   const countTrains = (score: any) => {
     set_tScore(score);
     console.log(`trains score`, tScore);
   };
-  // console.log(`stations`, stations);
+  const countStations = (score: any) => {
+    set_stationsScore(score);
+    console.log(`stations score`, stationsScore);
+  };
+
+  const counter = () => {
+    console.log(tScore + stationsScore);
+  };
+
   return (
     <IonPage>
       <Header />
 
       <TrainButtons countTrains={countTrains} />
-      <Stations />
+      <Stations countStations={countStations} />
+      <IonButton onClick={counter}>x</IonButton>
     </IonPage>
   );
 };

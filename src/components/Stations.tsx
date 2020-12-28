@@ -6,38 +6,49 @@ import {
   IonLabel,
   IonSelectOption,
   IonListHeader,
+  IonContent,
 } from "@ionic/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-interface ContainerProps {}
+interface StationsProps {
+  countStations: Function;
+}
 
-const ExploreContainer: React.FC<ContainerProps> = () => {
-  const [stations, set_stations] = useState(0);
-  console.log(`stations`, stations);
+const Stations: React.FC<StationsProps> = ({ countStations }) => {
+  const [stationsScore, set_stationsScore] = useState(12);
+  //   console.log(`stations`, stationsScore);
+
+  useEffect(() => {
+    countStations(stationsScore);
+  }, [stationsScore, countStations]);
+
   return (
-    <IonList>
-      <IonListHeader>
-        <IonLabel>Options</IonLabel>
-      </IonListHeader>
+    <IonContent>
+      <IonList>
+        <IonListHeader>
+          <IonLabel>Stations Used</IonLabel>
+        </IonListHeader>
 
-      <IonItem>
-        <IonSelect
-          value={stations}
-          placeholder="Select One"
-          onIonChange={(e) => {
-            e.preventDefault();
-            set_stations(e.detail.value);
-          }}
-        >
-          <IonSelectOption value="0">0</IonSelectOption>
-          <IonSelectOption value="1">1</IonSelectOption>
-          <IonSelectOption value="2">2</IonSelectOption>
-          <IonSelectOption value="3">3</IonSelectOption>
-        </IonSelect>
-      </IonItem>
-      <IonItem>Stations Used: {stations ?? "(none selected)"}</IonItem>
-    </IonList>
+        <IonItem>
+          <IonSelect
+            value={stationsScore}
+            okText="Okay"
+            cancelText="Cancel"
+            placeholder="Select One"
+            onIonChange={(e) => {
+              e.preventDefault();
+              set_stationsScore(parseInt(e.detail.value));
+            }}
+          >
+            <IonSelectOption value="12">0</IonSelectOption>
+            <IonSelectOption value="8">1</IonSelectOption>
+            <IonSelectOption value="4">2</IonSelectOption>
+            <IonSelectOption value="0">3</IonSelectOption>
+          </IonSelect>
+        </IonItem>
+      </IonList>
+    </IonContent>
   );
 };
 
-export default ExploreContainer;
+export default Stations;

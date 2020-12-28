@@ -29,7 +29,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <b style={{ fontSize: "20px" }}>Trains:</b>
       </h4>
       <IonContent>
-        <div style={{ margin: "10px" }}>
+        <div style={{ margin: "10px", marginBottom: "0" }}>
           <IonButton
             style={{ margin: "5px", width: "125px" }}
             color="medium"
