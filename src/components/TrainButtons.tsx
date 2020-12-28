@@ -1,5 +1,5 @@
 import React from "react";
-import "./ExploreContainer.css";
+
 import { IonButton, IonContent } from "@ionic/react";
 import { img } from "../icons/img";
 import { useState, useEffect } from "react";
