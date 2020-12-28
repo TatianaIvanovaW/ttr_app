@@ -2,11 +2,13 @@ import React from "react";
 import "./ExploreContainer.css";
 import { IonButton, IonContent } from "@ionic/react";
 import { img } from "../icons/img";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-interface ButtonsProps {}
+interface ButtonsProps {
+  countTrains: Function;
+}
 
-const TrainButtons: React.FC<ButtonsProps> = () => {
+const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
   const [value1, set_value1] = useState(0);
   const [value2, set_value2] = useState(0);
   const [value3, set_value3] = useState(0);
@@ -16,7 +18,11 @@ const TrainButtons: React.FC<ButtonsProps> = () => {
 
   const result =
     value1 + value2 * 2 + value3 * 4 + value4 * 7 + value6 * 15 + value8 * 21;
-  console.log(result);
+
+  useEffect(() => {
+    countTrains(result);
+  }, [result, countTrains]);
+
   return (
     <>
       <h4 style={{ textAlign: "center" }}>
