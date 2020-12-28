@@ -7,15 +7,36 @@ import {
   IonItem,
   IonSelect,
   IonSelectOption,
+  IonRadio,
+  IonRadioGroup,
 } from "@ionic/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import longRoutes from "../data/long";
 
-interface ContainerProps {}
+interface ContainerProps {
+  countLongRoute: Function;
+}
 
-const LongRoutes: React.FC<ContainerProps> = () => {
+const LongRoutes: React.FC<ContainerProps> = ({ countLongRoute }) => {
   const [longRouteId, set_longRouteId] = useState(0);
-  console.log(`route id`, longRouteId);
+
+  const [lrStatus, set_lrStatus] = useState("");
+
+  const long = longRoutes.find((route) => {
+    return route.id === longRouteId;
+  });
+
+  const longScore = long
+    ? lrStatus === "done"
+      ? long.score
+      : lrStatus === "notdone"
+      ? -long.score
+      : 0
+    : null;
+
+  useEffect(() => {
+    countLongRoute(longScore);
+  }, [longScore, countLongRoute]);
 
   return (
     <IonContent>
@@ -44,6 +65,22 @@ const LongRoutes: React.FC<ContainerProps> = () => {
             })}
           </IonSelect>
         </IonItem>
+        <IonRadioGroup
+          onIonChange={(e) => {
+            e.preventDefault();
+            set_lrStatus(e.detail.value);
+          }}
+        >
+          <IonItem>
+            <IonLabel>Done</IonLabel>
+            <IonRadio color="warning" slot="start" value="done" />
+          </IonItem>
+
+          <IonItem>
+            <IonLabel>Not done</IonLabel>
+            <IonRadio color="warning" slot="start" value="notdone" />
+          </IonItem>
+        </IonRadioGroup>
       </IonList>
     </IonContent>
   );
