@@ -34,7 +34,7 @@ const Stations: React.FC<StationsProps> = ({ countStations }) => {
             value={stationsScore}
             okText="Okay"
             cancelText="Cancel"
-            placeholder="Select One"
+            placeholder="How many stations did you use?"
             onIonChange={(e) => {
               e.preventDefault();
               set_stationsScore(parseInt(e.detail.value));

@@ -5,6 +5,7 @@ import "./Home.css";
 import Header from "../components/Header";
 import { useState } from "react";
 import Stations from "../components/Stations";
+import LongRoutes from "../components/LongRoutes";
 
 const Home: React.FC = () => {
   const [tScore, set_tScore] = useState(0);
@@ -29,6 +30,7 @@ const Home: React.FC = () => {
 
       <TrainButtons countTrains={countTrains} />
       <Stations countStations={countStations} />
+      <LongRoutes />
       <IonButton onClick={counter}>x</IonButton>
     </IonPage>
   );
