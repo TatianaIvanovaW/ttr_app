@@ -59,7 +59,7 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
           multiple={true}
           okText="Okay"
           cancelText="Cancel"
-          placeholder="What was your short routes?"
+          placeholder="What were your short routes?"
           onIonChange={(e) => {
             e.preventDefault();
             set_Shorts(e.detail.value);

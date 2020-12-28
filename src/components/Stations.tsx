@@ -29,7 +29,6 @@ const Stations: React.FC<StationsProps> = ({ countStations }) => {
 
       <IonItem>
         <IonSelect
-          value={stationsScore}
           okText="Okay"
           cancelText="Cancel"
           placeholder="How many stations did you use?"

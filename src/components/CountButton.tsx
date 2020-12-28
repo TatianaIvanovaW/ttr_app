@@ -52,7 +52,12 @@ const CountButton: React.FC<ContainerProps> = ({
   };
 
   return (
-    <IonButton color="warning" onClick={countScore} type="submit">
+    <IonButton
+      style={{ margin: "15px" }}
+      color="warning"
+      onClick={countScore}
+      type="submit"
+    >
       count score ✓
     </IonButton>
   );

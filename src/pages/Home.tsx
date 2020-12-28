@@ -48,9 +48,15 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <Header />
+      <Header />{" "}
       <IonLabel style={{ textAlign: "center" }}>Score : {finalScore}</IonLabel>
-      <IonButton color="warning" fill="outline" onClick={reset} type="submit">
+      <IonButton
+        style={{ margin: "15px" }}
+        color="warning"
+        fill="outline"
+        onClick={reset}
+        type="submit"
+      >
         Reset
       </IonButton>
       <IonContent>
