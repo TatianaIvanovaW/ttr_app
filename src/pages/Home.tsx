@@ -1,10 +1,4 @@
-import {
-  IonPage,
-  IonLabel,
-  IonButton,
-  IonContent,
-  IonAlert,
-} from "@ionic/react";
+import { IonPage, IonLabel, IonContent, IonAlert } from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
 import "./Home.css";
@@ -23,10 +17,6 @@ const Home: React.FC = () => {
   const [shorts, set_shorts] = useState<any>([]);
   const [finalScore, set_finalScore] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
-
-  const reset = () => {
-    set_finalScore(0);
-  };
 
   const result = (score: any) => {
     set_finalScore(score);
@@ -60,16 +50,10 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <Header />
-      <IonLabel style={{ textAlign: "center" }}>Score : {finalScore}</IonLabel>
-      <IonButton
-        style={{ margin: "15px" }}
-        color="warning"
-        fill="outline"
-        onClick={reset}
-        type="submit"
-      >
-        Reset
-      </IonButton>
+      <IonLabel style={{ textAlign: "center" }}>
+        Score : <b>{finalScore}</b>
+      </IonLabel>
+
       <IonContent>
         <TrainButtons countTrains={countTrains} />
         <Stations countStations={countStations} />

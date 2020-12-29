@@ -16,7 +16,7 @@ const Header: React.FC<ContainerProps> = () => {
               padding: "15px",
             }}
           >
-            Ticket To Ride
+            ttr calculator
           </span>
           <span
             style={{
