@@ -1,4 +1,10 @@
-import { IonPage, IonLabel, IonButton, IonContent } from "@ionic/react";
+import {
+  IonPage,
+  IonLabel,
+  IonButton,
+  IonContent,
+  IonAlert,
+} from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
 import "./Home.css";
@@ -16,6 +22,7 @@ const Home: React.FC = () => {
   const [longRouteScore, set_longRouteScore] = useState(0);
   const [shorts, set_shorts] = useState<any>([]);
   const [finalScore, set_finalScore] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   const reset = () => {
     set_finalScore(0);
@@ -46,9 +53,13 @@ const Home: React.FC = () => {
     console.log(`short routes in a parent component`, shorts);
   };
 
+  const setAlert = (score: boolean) => {
+    setShowAlert(score);
+  };
+
   return (
     <IonPage>
-      <Header />{" "}
+      <Header />
       <IonLabel style={{ textAlign: "center" }}>Score : {finalScore}</IonLabel>
       <IonButton
         style={{ margin: "15px" }}
@@ -71,6 +82,19 @@ const Home: React.FC = () => {
         longRouteScore={longRouteScore}
         shorts={shorts}
         result={result}
+        setAlert={setAlert}
+      />
+      <IonAlert
+        isOpen={showAlert}
+        onDidDismiss={() => setShowAlert(false)}
+        cssClass="my-custom-class"
+        header={"Extra points!"}
+        message={` The player with the longest continuous path of routes receives this
+          special bonus card and can add 10points to his score (in case
+          of a tie, both players receive the points).The continuous
+          path may include loops and pass through the same city several times,
+          but a given plastic train may never be used twice.`}
+        buttons={["OK"]}
       />
       <Footer />
     </IonPage>

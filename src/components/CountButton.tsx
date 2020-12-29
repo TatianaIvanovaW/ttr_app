@@ -7,6 +7,7 @@ interface ContainerProps {
   longRouteScore: Number;
   shorts: any;
   result: Function;
+  setAlert: Function;
 }
 
 const CountButton: React.FC<ContainerProps> = ({
@@ -15,6 +16,7 @@ const CountButton: React.FC<ContainerProps> = ({
   longRouteScore,
   shorts,
   result,
+  setAlert,
 }) => {
   const scroll = (e: any) => {
     e.preventDefault();
@@ -47,7 +49,7 @@ const CountButton: React.FC<ContainerProps> = ({
     });
     console.log(`final score`, score);
     result(score);
-
+    setAlert(true);
     scroll(e);
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ExploreContainer.css";
+
 import { IonButton } from "@ionic/react";
 import { img } from "../icons/img";
 import { useState, useEffect } from "react";
@@ -39,7 +39,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value1 < 4 ? set_value1(value1 + 1) : null;
           }}
         >
-          1<img alt="train" src={img}></img>trains: {value1}
+          1<img style={{ margin: "7px" }} alt="train" src={img}></img>trains:{" "}
+          {value1}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
@@ -57,7 +58,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value2 < 33 ? set_value2(value2 + 1) : null;
           }}
         >
-          2 <img alt="train" src={img}></img> trains: {value2}
+          2 <img alt="train" style={{ margin: "7px" }} src={img}></img> trains:{" "}
+          {value2}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
@@ -75,7 +77,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value3 < 31 ? set_value3(value3 + 1) : null;
           }}
         >
-          3 <img alt="train" src={img}></img> trains: {value3}
+          3 <img alt="train" style={{ margin: "7px" }} src={img}></img> trains:{" "}
+          {value3}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
@@ -93,7 +96,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value4 < 29 ? set_value4(value4 + 1) : null;
           }}
         >
-          4 <img alt="train" src={img}></img> trains: {value4}
+          4 <img alt="train" style={{ margin: "7px" }} src={img}></img> trains:{" "}
+          {value4}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
@@ -111,7 +115,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value6 < 2 ? set_value6(value6 + 1) : null;
           }}
         >
-          6 <img alt="train" src={img}></img> trains: {value6}
+          6 <img alt="train" style={{ margin: "7px" }} src={img}></img> trains:{" "}
+          {value6}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
@@ -129,7 +134,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
             return value8 < 1 ? set_value8(value8 + 1) : null;
           }}
         >
-          8 <img alt="train" src={img}></img> trains: {value8}
+          8 <img alt="train" style={{ margin: "7px" }} src={img}></img> trains:{" "}
+          {value8}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
