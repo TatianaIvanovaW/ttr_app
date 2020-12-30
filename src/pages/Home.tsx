@@ -1,4 +1,12 @@
-import { IonPage, IonLabel, IonContent, IonAlert } from "@ionic/react";
+import {
+  IonPage,
+  IonLabel,
+  IonContent,
+  IonAlert,
+  IonButton,
+  IonIcon,
+  IonRow,
+} from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
 import "./Home.css";
@@ -9,6 +17,7 @@ import LongRoutes from "../components/LongRoutes";
 import ShortRoutes from "../components/ShortRoutes";
 import Footer from "../components/Footer";
 import CountButton from "../components/CountButton";
+import { refreshOutline } from "ionicons/icons";
 
 const Home: React.FC = () => {
   const [tScore, set_tScore] = useState(0);
@@ -17,6 +26,10 @@ const Home: React.FC = () => {
   const [shorts, set_shorts] = useState<any>([]);
   const [finalScore, set_finalScore] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
+
+  function doRefresh() {
+    window.location.reload(false);
+  }
 
   const result = (score: any) => {
     set_finalScore(score);
@@ -50,10 +63,28 @@ const Home: React.FC = () => {
   return (
     <IonPage>
       <Header />
-      <IonLabel style={{ textAlign: "center" }}>
-        Score : <b>{finalScore}</b>
-      </IonLabel>
-
+      <IonRow style={{ justifyContent: "center" }}>
+        <IonLabel
+          style={{ textAlign: "center", marginTop: "20px", fontSize: "23px" }}
+        >
+          Score : <b style={{ color: "#93110D" }}>{finalScore}</b>
+        </IonLabel>
+        <IonButton
+          style={{
+            margin: "10px",
+            marginLeft: "30px",
+            marginRight: "30px",
+          }}
+          color="dark"
+          fill="outline"
+          onClick={doRefresh}
+        >
+          <IonIcon
+            style={{ margin: "5px", color: "#93110D" }}
+            icon={refreshOutline}
+          ></IonIcon>
+        </IonButton>
+      </IonRow>
       <IonContent>
         <TrainButtons countTrains={countTrains} />
         <Stations countStations={countStations} />

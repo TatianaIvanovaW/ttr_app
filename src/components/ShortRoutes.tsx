@@ -15,7 +15,7 @@ import {
   IonCard,
   IonCol,
 } from "@ionic/react";
-import { close } from "ionicons/icons";
+import { close, trailSignOutline } from "ionicons/icons";
 
 interface ContainerProps {
   getShortRoutesArray: Function;
@@ -52,7 +52,13 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
   return (
     <IonList>
       <IonListHeader>
-        <IonLabel>Your short routes:</IonLabel>
+        <IonLabel>
+          <IonIcon
+            style={{ color: "#93110D" }}
+            icon={trailSignOutline}
+          ></IonIcon>{" "}
+          Your short routes:
+        </IonLabel>
       </IonListHeader>
       <IonItem>
         <IonSelect
@@ -82,7 +88,9 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
               <IonCol key={i}>
                 <IonCard>
                   <IonItem>
-                    <IonLabel>{route}</IonLabel>
+                    <IonLabel style={{ color: "#93110D" }}>
+                      <b>{route}</b>
+                    </IonLabel>
                     <IonIcon
                       onClick={() => {
                         const newArray = shorts.filter((r) => {
@@ -103,12 +111,12 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
                   >
                     <IonItem>
                       <IonLabel>Done</IonLabel>
-                      <IonRadio color="warning" slot="start" value="done" />
+                      <IonRadio color="danger" slot="start" value="done" />
                     </IonItem>
 
                     <IonItem>
                       <IonLabel>Not done</IonLabel>
-                      <IonRadio color="warning" slot="start" value="notdone" />
+                      <IonRadio color="danger" slot="start" value="notdone" />
                     </IonItem>
                   </IonRadioGroup>
                 </IonCard>

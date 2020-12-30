@@ -23,6 +23,7 @@ const Header: React.FC<ContainerProps> = () => {
               fontFamily: "'Nova Cut', cursive",
               textAlign: "center",
               fontSize: "20px",
+              color: "#93110D",
             }}
           >
             {" "}

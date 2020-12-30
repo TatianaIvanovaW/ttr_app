@@ -1,8 +1,9 @@
 import React from "react";
 
-import { IonButton } from "@ionic/react";
+import { IonButton, IonIcon } from "@ionic/react";
 import { img } from "../icons/img";
 import { useState, useEffect } from "react";
+import { trainOutline } from "ionicons/icons";
 
 interface ButtonsProps {
   countTrains: Function;
@@ -26,25 +27,28 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
   return (
     <>
       <h4 style={{ textAlign: "center" }}>
-        <b style={{ fontSize: "20px" }}>Trains:</b>
+        <IonIcon style={{ color: "#93110D" }} icon={trainOutline}></IonIcon>{" "}
+        <b style={{ fontSize: "20px" }}> Trains:</b>
       </h4>
 
       <div style={{ margin: "10px" }}>
         <IonButton
           style={{ margin: "5px", width: "125px" }}
-          color="medium"
+          color="dark"
+          fill="outline"
           onClick={(e) => {
             e.preventDefault();
 
             return value1 < 4 ? set_value1(value1 + 1) : null;
           }}
         >
-          1<img style={{ margin: "7px" }} alt="train" src={img}></img>trains:{" "}
-          {value1}
+          1<img style={{ margin: "7px" }} alt="train" src={img}></img>
+          trains: {value1}
         </IonButton>
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value1 > 0 ? set_value1(value1 - 1) : null;
           }}
@@ -53,7 +57,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         </IonButton>
         <IonButton
           style={{ margin: "5px", width: "125px" }}
-          color="medium"
+          color="dark"
+          fill="outline"
           onClick={() => {
             return value2 < 33 ? set_value2(value2 + 1) : null;
           }}
@@ -64,6 +69,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value2 > 0 ? set_value2(value2 - 1) : null;
           }}
@@ -72,7 +78,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         </IonButton>
         <IonButton
           style={{ margin: "5px", width: "125px" }}
-          color="medium"
+          color="dark"
+          fill="outline"
           onClick={() => {
             return value3 < 31 ? set_value3(value3 + 1) : null;
           }}
@@ -83,6 +90,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value3 > 0 ? set_value3(value3 - 1) : null;
           }}
@@ -90,7 +98,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
           -1
         </IonButton>
         <IonButton
-          color="medium"
+          color="dark"
+          fill="outline"
           style={{ margin: "5px", width: "125px" }}
           onClick={() => {
             return value4 < 29 ? set_value4(value4 + 1) : null;
@@ -102,6 +111,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value4 > 0 ? set_value4(value4 - 1) : null;
           }}
@@ -109,7 +119,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
           -1
         </IonButton>
         <IonButton
-          color="medium"
+          color="dark"
+          fill="outline"
           style={{ margin: "5px", width: "125px" }}
           onClick={() => {
             return value6 < 2 ? set_value6(value6 + 1) : null;
@@ -121,6 +132,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value6 > 0 ? set_value6(value6 - 1) : null;
           }}
@@ -128,7 +140,8 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
           -1
         </IonButton>
         <IonButton
-          color="medium"
+          color="dark"
+          fill="outline"
           style={{ margin: "5px", width: "125px" }}
           onClick={() => {
             return value8 < 1 ? set_value8(value8 + 1) : null;
@@ -140,6 +153,7 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <IonButton
           style={{ margin: "5px" }}
           color="danger"
+          fill="outline"
           onClick={() => {
             return value8 > 0 ? set_value8(value8 - 1) : null;
           }}

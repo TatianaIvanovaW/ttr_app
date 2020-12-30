@@ -1,5 +1,6 @@
 import React from "react";
-import { IonButton } from "@ionic/react";
+import { IonButton, IonIcon } from "@ionic/react";
+import { checkmarkDone } from "ionicons/icons";
 
 interface ContainerProps {
   tScore: Number;
@@ -55,12 +56,20 @@ const CountButton: React.FC<ContainerProps> = ({
 
   return (
     <IonButton
-      style={{ margin: "15px" }}
-      color="warning"
+      style={{
+        margin: "10px",
+        marginLeft: "30px",
+        marginRight: "30px",
+      }}
+      color="dark"
+      fill="outline"
       onClick={countScore}
       type="submit"
     >
-      count score ✓
+      <IonIcon
+        style={{ margin: "5px", color: "#93110D" }}
+        icon={checkmarkDone}
+      ></IonIcon>
     </IonButton>
   );
 };
