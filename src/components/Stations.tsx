@@ -9,7 +9,7 @@ import {
   IonIcon,
 } from "@ionic/react";
 import { useState, useEffect } from "react";
-import { homeOutline } from "ionicons/icons";
+import { homeOutline, home } from "ionicons/icons";
 
 interface StationsProps {
   countStations: Function;
@@ -27,7 +27,10 @@ const Stations: React.FC<StationsProps> = ({ countStations }) => {
     <IonList>
       <IonListHeader>
         <IonLabel>
-          <IonIcon style={{ color: "#93110D" }} icon={homeOutline}></IonIcon>{" "}
+          <IonIcon
+            style={{ color: "#93110D" }}
+            icon={stationsScore === 12 ? homeOutline : home}
+          ></IonIcon>{" "}
           Stations Used
         </IonLabel>
       </IonListHeader>

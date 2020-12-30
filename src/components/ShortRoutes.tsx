@@ -15,7 +15,7 @@ import {
   IonCard,
   IonCol,
 } from "@ionic/react";
-import { close, trailSignOutline } from "ionicons/icons";
+import { close, trailSignOutline, trailSign } from "ionicons/icons";
 
 interface ContainerProps {
   getShortRoutesArray: Function;
@@ -55,13 +55,14 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
         <IonLabel>
           <IonIcon
             style={{ color: "#93110D" }}
-            icon={trailSignOutline}
-          ></IonIcon>{" "}
+            icon={shorts.length < 3 ? trailSignOutline : trailSign}
+          ></IonIcon>
           Your short routes:
         </IonLabel>
       </IonListHeader>
       <IonItem>
         <IonSelect
+          interface="alert"
           multiple={true}
           okText="Okay"
           cancelText="Cancel"
@@ -70,6 +71,7 @@ const ShortRoutes: React.FC<ContainerProps> = ({ getShortRoutesArray }) => {
             e.preventDefault();
             set_Shorts(e.detail.value);
           }}
+          color="danger"
         >
           {shortRouteSorted.map((route) => {
             return (

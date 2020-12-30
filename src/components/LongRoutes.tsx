@@ -12,7 +12,7 @@ import {
 } from "@ionic/react";
 import { useState, useEffect } from "react";
 import longRoutes from "../data/long";
-import { trailSignOutline } from "ionicons/icons";
+import { trailSignOutline, trailSign } from "ionicons/icons";
 
 interface ContainerProps {
   countLongRoute: Function;
@@ -45,7 +45,7 @@ const LongRoutes: React.FC<ContainerProps> = ({ countLongRoute }) => {
         <IonLabel>
           <IonIcon
             style={{ color: "#93110D" }}
-            icon={trailSignOutline}
+            icon={!longRouteId ? trailSignOutline : trailSign}
           ></IonIcon>{" "}
           Your long route:
         </IonLabel>

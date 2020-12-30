@@ -3,7 +3,7 @@ import React from "react";
 import { IonButton, IonIcon } from "@ionic/react";
 import { img } from "../icons/img";
 import { useState, useEffect } from "react";
-import { trainOutline } from "ionicons/icons";
+import { trainOutline, train } from "ionicons/icons";
 
 interface ButtonsProps {
   countTrains: Function;
@@ -27,7 +27,10 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
   return (
     <>
       <h4 style={{ textAlign: "center" }}>
-        <IonIcon style={{ color: "#93110D" }} icon={trainOutline}></IonIcon>{" "}
+        <IonIcon
+          style={{ color: "#93110D" }}
+          icon={!result ? trainOutline : train}
+        ></IonIcon>{" "}
         <b style={{ fontSize: "20px" }}> Trains:</b>
       </h4>
 
