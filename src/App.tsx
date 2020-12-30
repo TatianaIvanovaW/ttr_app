@@ -40,7 +40,7 @@ import "./theme/variables.css";
 const App: React.FC = () => {
   const { SplashScreen } = Plugins;
   SplashScreen.show({
-    showDuration: 1500,
+    showDuration: 1000,
     autoHide: true,
   });
 
