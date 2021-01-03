@@ -9,7 +9,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import TrainButtons from "../components/TrainButtons";
-import "./Home.css";
+import "./home.css";
 import Header from "../components/Header";
 import { useState } from "react";
 import Stations from "../components/Stations";
@@ -67,7 +67,7 @@ const Home: React.FC = () => {
         <IonLabel
           style={{ textAlign: "center", marginTop: "20px", fontSize: "23px" }}
         >
-          Score : <b style={{ color: "#93110D" }}>{finalScore}</b>
+          Score : <b className="darkScore">{finalScore}</b>
         </IonLabel>
         <IonButton
           style={{

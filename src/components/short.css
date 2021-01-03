@@ -1,0 +1,9 @@
+.darkShort {
+  color: #93110d;
+}
+
+@media (prefers-color-scheme: dark) {
+  .darkShort {
+    color: white;
+  }
+}

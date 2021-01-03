@@ -186,6 +186,10 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1c1c1d;
   }
 
+  .darkScore {
+    color: #f2f2f2;
+  }
+
   /*
    * Material Design Dark Theme
    * -------------------------------------------
