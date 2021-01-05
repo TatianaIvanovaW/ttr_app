@@ -1,7 +1,7 @@
 import React from "react";
 
-import { IonButton, IonIcon } from "@ionic/react";
-
+import { IonButton, IonIcon, IonRow } from "@ionic/react";
+import "./trainbuttons.css";
 import { useState, useEffect } from "react";
 import { trainOutline, train } from "ionicons/icons";
 import logo from "../icons/train.png";
@@ -19,10 +19,12 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
   const [value6, set_value6] = useState(0);
   const [value8, set_value8] = useState(0);
 
-  // const logo = require("./train.jpg");
-
   const result =
     value1 + value2 * 2 + value3 * 4 + value4 * 7 + value6 * 15 + value8 * 21;
+
+  const trainLeft =
+    45 -
+    (value1 + value2 * 2 + value3 * 3 + value4 * 4 + value6 * 6 + value8 * 8);
 
   useEffect(() => {
     countTrains(result);
@@ -38,195 +40,209 @@ const TrainButtons: React.FC<ButtonsProps> = ({ countTrains }) => {
         <b style={{ fontSize: "20px" }}> Trains:</b>
       </h4>
 
-      <div style={{ margin: "10px" }}>
-        <IonButton
-          style={{ margin: "5px", width: "125px" }}
-          color="dark"
-          fill="outline"
-          onClick={(e) => {
-            e.preventDefault();
-
-            return value1 < 4 ? set_value1(value1 + 1) : null;
-          }}
-        >
-          1
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+      <div style={{ margin: "15px" }}>
+        <IonRow>
+          <IonButton
+            style={{ margin: "5px", width: "95px" }}
+            color="dark"
+            fill="outline"
+            onClick={(e) => {
+              e.preventDefault();
+              if (trainLeft > 0)
+                return value1 < 4 ? set_value1(value1 + 1) : null;
             }}
-            alt="train"
-            src={!value1 ? logo : logoFilled}
-          ></img>
-          trains: {value1}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value1 > 0 ? set_value1(value1 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px", width: "125px" }}
-          color="dark"
-          fill="outline"
-          onClick={() => {
-            return value2 < 33 ? set_value2(value2 + 1) : null;
-          }}
-        >
-          2{" "}
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+          >
+            1
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value1 ? logo : logoFilled}
+            ></img>
+          </IonButton>
+          <span className="trainValue"> {value1}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              return value1 > 0 ? set_value1(value1 - 1) : null;
             }}
-            alt="train"
-            src={!value2 ? logo : logoFilled}
-          ></img>{" "}
-          trains: {value2}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value2 > 0 ? set_value2(value2 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px", width: "125px" }}
-          color="dark"
-          fill="outline"
-          onClick={() => {
-            return value3 < 31 ? set_value3(value3 + 1) : null;
-          }}
-        >
-          3{" "}
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+          >
+            -1
+          </IonButton>{" "}
+          <IonButton
+            color="dark"
+            fill="outline"
+            style={{ margin: "5px", marginLeft: "15px", width: "95px" }}
+            onClick={() => {
+              if (trainLeft >= 4)
+                return value4 < 29 ? set_value4(value4 + 1) : null;
             }}
-            alt="train"
-            src={!value3 ? logo : logoFilled}
-          ></img>{" "}
-          trains: {value3}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value3 > 0 ? set_value3(value3 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
-        <IonButton
-          color="dark"
-          fill="outline"
-          style={{ margin: "5px", width: "125px" }}
-          onClick={() => {
-            return value4 < 29 ? set_value4(value4 + 1) : null;
-          }}
-        >
-          4{" "}
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+          >
+            4{" "}
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value4 ? logo : logoFilled}
+            ></img>{" "}
+          </IonButton>
+          <span className="trainValue"> {value4}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              return value4 > 0 ? set_value4(value4 - 1) : null;
             }}
-            alt="train"
-            src={!value4 ? logo : logoFilled}
-          ></img>{" "}
-          trains: {value4}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value4 > 0 ? set_value4(value4 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
-        <IonButton
-          color="dark"
-          fill="outline"
-          style={{ margin: "5px", width: "125px" }}
-          onClick={() => {
-            return value6 < 2 ? set_value6(value6 + 1) : null;
-          }}
-        >
-          6{" "}
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+          >
+            -1
+          </IonButton>
+        </IonRow>
+        <IonRow>
+          <IonButton
+            style={{ margin: "5px", width: "95px" }}
+            color="dark"
+            fill="outline"
+            onClick={() => {
+              if (trainLeft >= 2)
+                return value2 < 33 ? set_value2(value2 + 1) : null;
             }}
-            alt="train"
-            src={!value6 ? logo : logoFilled}
-          ></img>{" "}
-          trains: {value6}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value6 > 0 ? set_value6(value6 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
-        <IonButton
-          color="dark"
-          fill="outline"
-          style={{ margin: "5px", width: "125px" }}
-          onClick={() => {
-            return value8 < 1 ? set_value8(value8 + 1) : null;
-          }}
-        >
-          8{" "}
-          <img
-            style={{
-              marginRight: "7px",
-              marginLeft: "7px",
-              width: "30px",
-              marginBottom: "10px",
+          >
+            2{" "}
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value2 ? logo : logoFilled}
+            ></img>{" "}
+          </IonButton>
+          <span className="trainValue"> {value2}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              return value2 > 0 ? set_value2(value2 - 1) : null;
             }}
-            alt="train"
-            src={!value8 ? logo : logoFilled}
-          ></img>{" "}
-          trains: {value8}
-        </IonButton>
-        <IonButton
-          style={{ margin: "5px" }}
-          color="danger"
-          fill="outline"
-          onClick={() => {
-            return value8 > 0 ? set_value8(value8 - 1) : null;
-          }}
-        >
-          -1
-        </IonButton>
+          >
+            -1
+          </IonButton>{" "}
+          <IonButton
+            color="dark"
+            fill="outline"
+            style={{ margin: "5px", marginLeft: "15px", width: "95px" }}
+            onClick={() => {
+              if (trainLeft >= 6)
+                return value6 < 2 ? set_value6(value6 + 1) : null;
+            }}
+          >
+            6{" "}
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value6 ? logo : logoFilled}
+            ></img>{" "}
+          </IonButton>
+          <span className="trainValue"> {value6}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              return value6 > 0 ? set_value6(value6 - 1) : null;
+            }}
+          >
+            -1
+          </IonButton>
+        </IonRow>
+        <IonRow>
+          <IonButton
+            style={{ margin: "5px", width: "95px" }}
+            color="dark"
+            fill="outline"
+            onClick={() => {
+              if (trainLeft >= 3)
+                return value3 < 31 ? set_value3(value3 + 1) : null;
+            }}
+          >
+            3{" "}
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value3 ? logo : logoFilled}
+            ></img>{" "}
+          </IonButton>
+          <span className="trainValue"> {value3}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              return value3 > 0 ? set_value3(value3 - 1) : null;
+            }}
+          >
+            -1
+          </IonButton>
+          <IonButton
+            color="dark"
+            fill="outline"
+            style={{ margin: "5px", marginLeft: "15px", width: "95px" }}
+            onClick={() => {
+              return value8 < 1 ? set_value8(value8 + 1) : null;
+            }}
+          >
+            8{" "}
+            <img
+              style={{
+                marginRight: "7px",
+                marginLeft: "7px",
+                width: "30px",
+                marginBottom: "10px",
+              }}
+              alt="train"
+              src={!value8 ? logo : logoFilled}
+            ></img>{" "}
+          </IonButton>
+          <span className="trainValue"> {value8}</span>
+          <IonButton
+            style={{ margin: "5px" }}
+            color="danger"
+            fill="outline"
+            onClick={() => {
+              if (trainLeft >= 8)
+                return value8 > 0 ? set_value8(value8 - 1) : null;
+            }}
+          >
+            -1
+          </IonButton>
+        </IonRow>
+        <p className="list">
+          trains left: <span className="number">{trainLeft}</span>
+        </p>
       </div>
     </>
   );
