@@ -11,28 +11,21 @@ interface ContainerProps {
   setAlert: Function;
 }
 
-const CountButton: React.FC<ContainerProps> = ({
-  tScore,
-  stationsScore,
-  longRouteScore,
-  shorts,
-  result,
-  setAlert,
-}) => {
+const CountButton: React.FC<ContainerProps> = () => {
   const scroll = (e: any) => {
     e.preventDefault();
     window["scrollTo"]({ top: 0, behavior: "smooth" });
   };
 
-  const countScore = (e: any) => {
+  const countScore = (e: any, props: ContainerProps) => {
     e.preventDefault();
     let data = [];
-    data.push(tScore, stationsScore, longRouteScore);
+    data.push(props.tScore, props.stationsScore, props.longRouteScore);
 
     // console.log(shorts);
-    if (shorts.length)
+    if (props.shorts.length)
       data.push(
-        shorts
+        props.shorts
           .map((route: any) => {
             return route.status === "done"
               ? route.score
@@ -49,11 +42,11 @@ const CountButton: React.FC<ContainerProps> = ({
       return sum + num;
     });
     console.log(`final score`, score);
-    result(score);
-    setAlert(true);
+    props.result(score);
+    props.setAlert(true);
     scroll(e);
   };
-
+  // module.exports = countScore;
   return (
     <IonButton
       style={{
@@ -63,7 +56,7 @@ const CountButton: React.FC<ContainerProps> = ({
       }}
       color="dark"
       fill="outline"
-      onClick={countScore}
+      onClick={() => countScore}
       type="submit"
     >
       <IonIcon
